@@ -78,9 +78,9 @@ class TestNode < Test::Unit::TestCase
 
     # check ROS_HOSTNAME
     original_host = ENV['ROS_HOSTNAME']
-    ENV['ROS_HOSTNAME'] = 'localhost'
+    ENV['ROS_HOSTNAME'] = '192.168.0.50'
     node2 = ROS::Node.new('/test_ros_env2')
-    assert_equal('localhost', node2.host)
+    assert_equal('192.168.0.50', node2.host)
     sleep 1
     node2.shutdown
 

@@ -11,7 +11,7 @@
 #
 
 if not ENV['ROS_MASTER_URI']
-  ENV['ROS_MASTER_URI'] = 'http://localhost:11311'
+  ENV['ROS_MASTER_URI'] = 'http://192.168.0.50:11311'
   puts "Warning: ROS_MASTER_URI is not set. Using #{ENV['ROS_MASTER_URI']}"
 end
 

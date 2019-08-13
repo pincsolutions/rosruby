@@ -117,7 +117,7 @@ module ROS
     # @return [Boolean] true: available, false: time out
     def wait_for_service(service_name, timeout_sec)
       begin
-        timeout(timeout_sec) do
+        Timeout.timeout(timeout_sec) do
           while @is_ok
             if @master.lookup_service(service_name)
               return true

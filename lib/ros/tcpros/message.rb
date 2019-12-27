@@ -29,7 +29,10 @@ module ROS::TCPROS
       sio.rewind
       data = sio.read
       len = data.length
-      data = [len, data].pack("La#{len}")
+      len += 1 # it's BAD BAD, but we had last char cut. The * option doesn't cut it
+      # from the buffer, but as length is embedded into the message - it too short, and gets cut on the other side :/
+      data = [len, data].pack("La#{len}") # we COULD try A here - so that string (too long) - is space padded, rather then null padded
+      # data = [len, data].pack('La*')
       socket.write(data)
       data
     end
